@@ -37,6 +37,27 @@ class DokterViewModel(
         )
     }
 
+    private fun validateFields(): Boolean{
+        val event = uiState.dokterEvent
+        val errorState = FormErrorState(
+            idDokter = if (event.idDokter.isNotEmpty()) null
+            else " iddokter tida boleh kosong",
+            nama = if (event.nama.isNotEmpty()) null
+            else " nama tidak boleh kosong",
+            spesialis = if (event.spesialis.isNotEmpty()) null
+            else "pilih spesialis",
+            klinik = if (event.klinik.isNotEmpty()) null
+            else " klinik tidak boleh kosong",
+            noHp = if (event.noHp.isNotEmpty()) null
+            else " no hp harus di isi",
+            jamKerja = if (event.jamKerja.isNotEmpty()) null
+            else "jam kerja harus di isi"
+        )
+
+        uiState = uiState.copy(isEntryValid = errorState)
+        return  errorState.isValid()
+    }
+
 
 
 data class DokterUIState(
@@ -81,5 +102,4 @@ data class FormErrorState(
                 && noHp == null
                 && jamKerja == null
     }
-}
 }
