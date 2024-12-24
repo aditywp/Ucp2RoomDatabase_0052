@@ -24,3 +24,5 @@
     ![Screenshot_20241224_132948](https://github.com/user-attachments/assets/d286314f-e93a-4646-a3e1-6f82f1677bc6)
 13. Data berhasil dihapus
     ![Screenshot_20241224_133002](https://github.com/user-attachments/assets/fe920196-977d-45eb-a482-a15bfe1f6504)
+LINK VIDEO
+https://youtu.be/qaCkyuJzTIY
