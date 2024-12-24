@@ -7,21 +7,15 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,7 +25,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -54,11 +47,10 @@ fun InsertDokterView(
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
-    // Observasi perubahan snackbarMessage
     LaunchedEffect(uiState.snackBarMessage) {
         uiState.snackBarMessage?.let { message ->
             coroutineScope.launch {
-                snackbarHostState.showSnackbar(message) // Tampilkan snackbar
+                snackbarHostState.showSnackbar(message)
                 viewModel.resetSnackBarMessage()
             }
         }
@@ -102,10 +94,6 @@ fun InsertBodyDokter(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Card(
-            modifier = Modifier.fillMaxWidth().padding(1.dp),
-
-            ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -122,7 +110,7 @@ fun InsertBodyDokter(
                     onClick = onClick,
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary // Menggunakan warna tema untuk button
+                        containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
                     Text(text = "Simpan", color = Color.White)
@@ -130,7 +118,6 @@ fun InsertBodyDokter(
             }
         }
     }
-}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -155,7 +142,7 @@ fun FormDokter(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // ID Dokter
-        TextField(
+        OutlinedTextField(
             value = dokterEvent.idDokter,
             onValueChange = { onValueChange(dokterEvent.copy(idDokter = it)) },
             label = { Text("ID Dokter") },
@@ -170,7 +157,7 @@ fun FormDokter(
         }
 
         // Nama Dokter
-        TextField(
+        OutlinedTextField(
             value = dokterEvent.nama,
             onValueChange = { onValueChange(dokterEvent.copy(nama = it)) },
             label = { Text("Nama Dokter") },
@@ -220,8 +207,8 @@ fun FormDokter(
             }
         }
 
-        // Klinik
-        TextField(
+
+        OutlinedTextField(
             value = dokterEvent.klinik,
             onValueChange = { onValueChange(dokterEvent.copy(klinik = it)) },
             label = { Text("Klinik") },
@@ -235,8 +222,7 @@ fun FormDokter(
             )
         }
 
-        // No HP
-        TextField(
+        OutlinedTextField(
             value = dokterEvent.noHp,
             onValueChange = { onValueChange(dokterEvent.copy(noHp = it)) },
             label = { Text("No. HP") },
@@ -250,8 +236,7 @@ fun FormDokter(
             )
         }
 
-        // Jam Kerja
-        TextField(
+        OutlinedTextField(
             value = dokterEvent.jamKerja,
             onValueChange = { onValueChange(dokterEvent.copy(jamKerja = it)) },
             label = { Text("Jam Kerja") },
