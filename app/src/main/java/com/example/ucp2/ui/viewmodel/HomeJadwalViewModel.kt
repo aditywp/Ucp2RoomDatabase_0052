@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-
 class HomeJadwalViewModel(
     private val repositoryJadwal: RepositoryJadwal
 ): ViewModel() {
@@ -23,7 +22,7 @@ class HomeJadwalViewModel(
         .map {
                 jadwalList->
             HomeJadwalUiState(
-                listJw = jadwalList,
+                listJadwal = jadwalList,
                 isLoading = false,
             )
         }
@@ -60,8 +59,19 @@ class HomeJadwalViewModel(
 }
 
 data class HomeJadwalUiState(
-    val listJw: List<Jadwal> = listOf(),
+    val listJadwal: List<Jadwal> = listOf(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessage: String = ""
 )
+
+fun Jadwal.toJadwalUiEvent():JadwalEvent{
+    return JadwalEvent(
+        idJadwal = idJadwal,
+        namaDokter = namaDokter,
+        namaPasien = namaPasien,
+        noHp = noHp,
+        tanggalKonsultasi = tanggalKonsultasi,
+        status = status
+    )
+}
