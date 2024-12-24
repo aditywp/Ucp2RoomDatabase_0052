@@ -164,30 +164,16 @@ fun SearchBar() {
                     .width(300.dp)
                     .height(50.dp)
                     .clip(RoundedCornerShape(25.dp))
-                    .background(Brush.horizontalGradient(listOf(Color(0xFFE9E3F3), Color(0xFFE9E3F3))))
+                    .background(color = Color(0xff344e41))
                     .shadow(5.dp, RoundedCornerShape(25.dp)),
                 contentAlignment = Alignment.CenterStart
             ) {
-                BasicTextField(
-                    value = "",
-                    onValueChange = {},
+                Text("HALLO, Aditya Wirajaya Permono", color = Color.White,
                     modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .fillMaxWidth(),
-                    textStyle = androidx.compose.ui.text.TextStyle(fontSize = 16.sp, color = Color.Gray),
-                    decorationBox = { innerTextField ->
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector = Icons.Filled.Search,
-                                contentDescription = "Search",
-                                modifier = Modifier.size(24.dp),
-                                tint = Color.Gray
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Box { innerTextField() }
-                        }
-                    }
-                )
+                        .fillMaxWidth().offset(x = 23.dp))
+
+
+
             }
         }
     }
@@ -337,7 +323,7 @@ fun DoctorCard(
             .clip(RoundedCornerShape(8.dp))
             .padding(8.dp)
             .clickable(onClick = onClick)
-            .background(Color.White)
+            .background(color = color)
             .border(
                 width = 1.dp,
                 brush = Brush.radialGradient(
@@ -366,21 +352,30 @@ fun DoctorCard(
                 .padding(3.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(text = name, style = MaterialTheme.typography.titleMedium)
+            Text(
+                text = name,
+                style = MaterialTheme.typography.titleMedium,
+                color = Color.White
+
+            )
+
             Text(
                 text = speciality,
                 style = androidx.compose.ui.text.TextStyle(
                     fontSize = 14.sp,
-                    color = color
+                    color = Color.White
+
                 )
             )
+
             Text(
                 text = "Jam Kerja: $workHours",
-                style = androidx.compose.ui.text.TextStyle(fontSize = 12.sp, color = Color.Black)
+                style = androidx.compose.ui.text.TextStyle(fontSize = 12.sp, color = Color.White)
             )
+
             Text(
                 text = "Klinik: $location",
-                style = androidx.compose.ui.text.TextStyle(fontSize = 12.sp, color = Color.Black)
+                style = androidx.compose.ui.text.TextStyle(fontSize = 12.sp, color = Color.White)
             )
         }
     }
